@@ -9,7 +9,7 @@ export default function List({ activities, isGoodWeather, onDeleteActivity }) {
           return (
             <li key={id} className="list__item">
               {name}
-              <button type="button" onClick={() => onDeleteActivity(id)}>
+              <button type="button" className="list__button" onClick={() => onDeleteActivity(id)}>
                 <span role="img" aria-label="A trash can indicating deletion">
                   🗑️
                 </span>
