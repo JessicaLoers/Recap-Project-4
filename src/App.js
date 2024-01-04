@@ -7,13 +7,22 @@ import Form from './components/Form';
 function App() {
   const [activities, setActivities] = useLocalStorageState('_ACTIVITIES', { defaultValue: [] });
 
+  // A constant to simulate whether the weather is good or not.
+  const isGoodWeather = false;
+
+  // Filters activities based on "isGoodWeather"
+  const filteredActivities = activities.filter((activity) => {
+    return isGoodWeather ? activity.isForGoodWeather : !activity.isForGoodWeather;
+  });
+
   function handleAddActivity(newActivity) {
     setActivities((prevActivities) => [...prevActivities, { id: uid(), ...newActivity }]);
   }
 
   return (
     <main>
-      <List activities={activities} />
+      {/*List component is passed the filtered Activities*/}
+      <List activities={filteredActivities} isGoodWeather={isGoodWeather} />
       <Form onAddActivity={handleAddActivity} />
     </main>
   );
