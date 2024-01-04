@@ -1,0 +1,9 @@
+.form-container {
+    display: grid;
+    gap: 1rem
+}
+
+.form__input-container {
+  display: flex;
+  gap: 0.5rem;
+}
