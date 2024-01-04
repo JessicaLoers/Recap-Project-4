@@ -9,6 +9,7 @@ export default function List({ activities, isGoodWeather }) {
           return (
             <li key={id} className="list__item">
               {name}
+              <button>Hello</button>
             </li>
           );
         })}
