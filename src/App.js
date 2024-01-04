@@ -40,7 +40,10 @@ function App() {
   return (
     <main>
       <h1>
-        <span>{`It's ${weather.condition} and ${weather.temperature} °C`} </span>
+        <span role="img" aria-label="emoji indicating the current weather">
+          {weather.condition}
+        </span>
+        <span> {weather.temperature} °C</span>
       </h1>
       <List activities={filteredActivities} isGoodWeather={weather?.isGoodWeather} />
       <Form onAddActivity={handleAddActivity} />
