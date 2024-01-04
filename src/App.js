@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { uid } from 'uid';
 
+import List from './components/List';
 import Form from './components/Form';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
 
   return (
     <main>
+      <List activities={activities} />
       <Form onAddActivity={handleAddActivity} />
     </main>
   );
