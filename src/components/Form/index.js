@@ -1,6 +1,6 @@
 import './Form.css';
 
-export default function Form({ onAddactivity }) {
+export default function Form({ onAddActivity }) {
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -19,8 +19,8 @@ export default function Form({ onAddactivity }) {
       isForGoodWeather: isForGoodWeather.checked,
     };
 
-    // Calls "onAddactivity" function with "newEntry" as an argument
-    onAddactivity(newEntry);
+    // Calls "onAddActivity" function with "newEntry" as an argument
+    onAddActivity(newEntry);
 
     // Resets the form to its initial state, clearing all input fields
     form.reset();
