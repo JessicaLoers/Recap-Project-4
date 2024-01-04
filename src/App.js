@@ -37,7 +37,12 @@ function App() {
     setActivities((prevActivities) => [...prevActivities, { id: uid(), ...newActivity }]);
   }
 
+  // Function "handleDeleteActivity" to handle the deletion of an activity.
   function handleDeleteActivity(id) {
+    // Updating the "activities" state by calling the setter function "setActivities"
+    // For each "activity" in the "activities" array, the filter method checks if the "activity.id" is not equal to the "id" passed to the function.
+    // If "activity.id" is not equal to "id", the "activity" is kept in the new array.
+    // If it's equal, the "activity" is excluded, effectively deleting it from the list.
     setActivities(activities.filter((activity) => activity.id !== id));
   }
 
@@ -52,6 +57,7 @@ function App() {
       <List
         activities={filteredActivities}
         isGoodWeather={weather?.isGoodWeather}
+        // The List component is given the "handleDeleteActivity" function to call when deleting an activity
         onDeleteActivity={handleDeleteActivity}
       />
       <Form onAddActivity={handleAddActivity} />
