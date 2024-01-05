@@ -57,7 +57,7 @@ function App() {
       <List
         activities={filteredActivities}
         isGoodWeather={weather?.isGoodWeather}
-        // The List component is given the "handleDeleteActivity" function to call when deleting an activity
+        // The List component is given the "handleDeleteActivity" function to call when deleting an activity.
         onDeleteActivity={handleDeleteActivity}
       />
       <Form onAddActivity={handleAddActivity} />
