@@ -27,7 +27,24 @@ function App() {
     }
 
     fetchWeather();
+
+    // Declare a variable "timer".
+    // Use "setInterval" function to create a repeating interval timer
+    // 📢 https://developer.mozilla.org/en-US/docs/Web/API/setInterval
+    const timer = setInterval(() => {
+      // The arrow function is executed every 5000 milliseconds (5 seconds)
+      // Inside this function, "fetchWeather" is called to fetch and update weather data
+      fetchWeather();
+    }, 5000); // The second argument of the "setInterval" function is the intervall
+
+    // The function returns another function "clearIntervall" for cleanup in useEffect
+    // 📢  https://developer.mozilla.org/en-US/docs/Web/API/clearInterval
+    return () => {
+      clearInterval(timer);
+    };
   }, [setWeather]);
+
+  if (!weather) return;
 
   const filteredActivities = activities.filter((activity) => {
     return weather ? activity.isForGoodWeather : !activity.isForGoodWeather;
@@ -37,12 +54,7 @@ function App() {
     setActivities((prevActivities) => [...prevActivities, { id: uid(), ...newActivity }]);
   }
 
-  // Function "handleDeleteActivity" to handle the deletion of an activity.
   function handleDeleteActivity(id) {
-    // Updating the "activities" state by calling the setter function "setActivities"
-    // For each "activity" in the "activities" array, the filter method checks if the "activity.id" is not equal to the "id" passed to the function.
-    // If "activity.id" is not equal to "id", the "activity" is kept in the new array.
-    // If it's equal, the "activity" is excluded, effectively deleting it from the list.
     setActivities(activities.filter((activity) => activity.id !== id));
   }
 
@@ -57,7 +69,6 @@ function App() {
       <List
         activities={filteredActivities}
         isGoodWeather={weather?.isGoodWeather}
-        // The List component is given the "handleDeleteActivity" function to call when deleting an activity.
         onDeleteActivity={handleDeleteActivity}
       />
       <Form onAddActivity={handleAddActivity} />
